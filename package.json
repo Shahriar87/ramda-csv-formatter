@@ -1,0 +1,15 @@
+{
+  "name": "Ramda CSV Formatter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Shahriar Firoz",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.27.0"
+  }
+}
