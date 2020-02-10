@@ -8,10 +8,9 @@ const readData = R.pipe(
         R.pipe(
             R.replace(/.*\//, ''),
             R.replace(/\..*/, ''),
-            R.concat('date\t'),
             R.concat(R.__, '\n')
         ),
-        readFileSync
+        readFileSync,
     ])
 );
 
@@ -21,8 +20,12 @@ R.pipe(
         R.split('\n'),
         R.dropLast(1),
         R.map(R.pipe(
-            R.split('\t'),
-            R.view(R.lensIndex(1))
+            R.split(' '),
+            R.ifElse(
+                R.pipe(R.length, R.equals(1)),
+                R.view(R.lensIndex(0)),
+                R.view(R.lensIndex(4))
+            )
         )),
         R.converge(R.map, [
             R.pipe(R.head, R.objOf),
